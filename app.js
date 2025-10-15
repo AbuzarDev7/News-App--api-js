@@ -39,3 +39,6 @@ console.log(res.data.articles);
 categories.forEach(item=>{
   nav.innerHTML += `<a href="">${item}</a>`
 })
+nav.addEventListener("click",(eve)=>{
+eve.preventDefault();
+})
