@@ -1,9 +1,10 @@
 
 
 const container = document.querySelector("#container");
+const nav = document.querySelector("#navLinks");
 
-const apiKey = '8de318d802f4483ea62b85039d07373f';
-const categories = ["top","business","general","health","science","sports", "technology", "gaming","politics","education","food","finance"];
+const apiKey = 'bebf6b388c394357a141cf794e08a6c4'
+const categories = ["top","business","general","health","science","sports", "technology", "gaming","politics","education","food","markets","crypto","forex"];
 
 
 
@@ -30,6 +31,11 @@ urlToImage}" alt="News 2" />
   
 console.log(res.data.articles);
   })
-  .catch(err => console.error(err));
+  .catch(err => console.error("err=>",err));
 
+})
+
+
+categories.forEach(item=>{
+  nav.innerHTML += `<a href="">${item}</a>`
 })
