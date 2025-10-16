@@ -431,3 +431,56 @@ body {
 .dark-mode .logo span {
   color: #4da3ff !important;
 }
+
+/* ===== LOADER ===== */
+
+
+/* Ensure body & html take full height */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Loader */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+/* Loader overlay */
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+.loader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.7); /* dark overlay */
+  display: none; /* initially hidden */
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center */
+  z-index: 9999;
+}
+
+.spinner {
+  width: 60px;
+  height: 60px;
+  border: 6px solid #f3f3f3;
+  border-top: 6px solid #007bff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

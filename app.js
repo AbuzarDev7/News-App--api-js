@@ -4,11 +4,12 @@ const container = document.querySelector("#container");
 
 
 const nav = document.querySelector("#navLinks");
+const loader = document.querySelector("#loader");
 
 const themeToggleBtn = document.querySelector("#themeToggleBtn");
 const body = document.body;
 
-const apiKey = '8de318d802f4483ea62b85039d07373f'
+const apiKey = '85c6a4bc8bff4b56b4faba4406dab917'
 
 
 const categories = ["breaking news" ,"business","general","health","Datascience","sports", "technology", "gaming","politics","education","ai","markets","crypto","forex"];
@@ -50,14 +51,16 @@ categories.forEach(cat => {
   nav.appendChild(btn);                 
 
   btn.addEventListener("click", () => {
-    container.innerHTML = ""; 
-
+   
+   container.innerHTML = "";
+    loader.style.display = "flex";
     const url = validCategories.includes(cat.toLowerCase())
       ? `https://newsapi.org/v2/top-headlines?category=${cat.toLowerCase()}&language=en&apiKey=${apiKey}`
       : `https://newsapi.org/v2/everything?q=${cat}&language=en&apiKey=${apiKey}`;
 
     axios(url)
       .then(res => {
+        loader.style.display = "none"
         res.data.articles.forEach(news => {
           container.innerHTML += `
             <div class="news-card">
@@ -88,3 +91,5 @@ themeToggleBtn.addEventListener("click", () => {
     themeToggleBtn.textContent = "🌙 Dark Mode";
   }
 });
+
+
