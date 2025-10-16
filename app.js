@@ -1,11 +1,18 @@
 
 
 const container = document.querySelector("#container");
+
+
 const nav = document.querySelector("#navLinks");
 
-const apiKey = 'bebf6b388c394357a141cf794e08a6c4'
-const categories = ["top","business","general","health","science","sports", "technology", "gaming","politics","education","food","markets","crypto","forex"];
 
+const apiKey = '8de318d802f4483ea62b85039d07373f'
+
+
+const categories = ["breaking news" ,"business","general","health","Datascience","sports", "technology", "gaming","politics","education","ai","markets","crypto","forex"];
+
+
+const validCategories = ["business","entertainment","general","health","science","sports","technology"];
 
 
 categories.forEach(cat =>{
@@ -28,17 +35,41 @@ urlToImage}" alt="News 2" />
   <br/>
 </div>`
    })
-  
-console.log(res.data.articles);
   })
   .catch(err => console.error("err=>",err));
+});
 
-})
 
 
-categories.forEach(item=>{
-  nav.innerHTML += `<a href="">${item}</a>`
-})
-nav.addEventListener("click",(eve)=>{
-eve.preventDefault();
-})
+categories.forEach(cat => {
+  const btn = document.createElement("button");
+  btn.textContent = cat.toUpperCase();  
+  btn.dataset.category = cat;           
+  nav.appendChild(btn);                 
+
+  btn.addEventListener("click", () => {
+    container.innerHTML = ""; 
+
+    const url = validCategories.includes(cat.toLowerCase())
+      ? `https://newsapi.org/v2/top-headlines?category=${cat.toLowerCase()}&language=en&apiKey=${apiKey}`
+      : `https://newsapi.org/v2/everything?q=${cat}&language=en&apiKey=${apiKey}`;
+
+    axios(url)
+      .then(res => {
+        res.data.articles.forEach(news => {
+          container.innerHTML += `
+            <div class="news-card">
+              <img src="${news.urlToImage || 'https://via.placeholder.com/150'}" alt="News">
+              <div class="news-content">
+                <h2>${news.title}</h2>
+                <p>${news.description || "No description available."}</p>
+                <a href="${news.url}" target="_blank">Read more &raquo;</a>
+              </div>
+            </div>
+          `;
+        });
+      })
+      .catch(err => console.error('err==>', err));
+  });
+});
+
