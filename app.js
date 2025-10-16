@@ -5,6 +5,8 @@ const container = document.querySelector("#container");
 
 const nav = document.querySelector("#navLinks");
 
+const themeToggleBtn = document.querySelector("#themeToggleBtn");
+const body = document.body;
 
 const apiKey = '8de318d802f4483ea62b85039d07373f'
 
@@ -73,3 +75,16 @@ categories.forEach(cat => {
   });
 });
 
+
+let darkMode = false;
+
+themeToggleBtn.addEventListener("click", () => {
+  darkMode = !darkMode;
+  body.classList.toggle("dark-mode", darkMode);
+
+  if (darkMode) {
+    themeToggleBtn.textContent = "☀️ Light Mode";
+  } else {
+    themeToggleBtn.textContent = "🌙 Dark Mode";
+  }
+});

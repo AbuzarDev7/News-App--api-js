@@ -3,10 +3,10 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
   background: #f8f9fb;
   color: #222;
   padding: 40px 50px;
@@ -14,13 +14,6 @@ body {
 
 
 
-/* ===== RESET ===== */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
 
 /* ===== NAVBAR ===== */
 .navbar {
@@ -47,11 +40,110 @@ body {
   display: flex;
 }
 
-#navLinks button:hover {
-  background: #007bff;
+#themeToggleBtn {
+  padding: 5px 10px;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background: #2b3744;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 16px;
+  position: relative;
+  left: 10px;
+  bottom: 10px;
 }
+/* #navLinks button:hover {
+  background: #007bff;
+} */
+ /* Container for nav links */
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px; /* slightly bigger gap for clarity */
+  justify-content: center;
+  padding: 10px 0;
+}
+
+/* Individual links as buttons */
+.nav-links a,
+#navLinks button {
+  background: #333;        
+  color: #fff;              
+  border: none;
+  padding: 10px 20px;        
+  border-radius: 8px;      
+  cursor: pointer;
+  text-decoration: none;     
+  font-weight: 500;         
+  transition: all 0.3s ease; 
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hover and active effects */
+.nav-links a:hover,
+.nav-links a.active,
+#navLinks button:hover,
+#navLinks button.active {
+  background: #007bff; 
+  color: #fff;
+  transform: translateY(-2px); 
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.4); 
+}
+/* ====== DARK MODE ====== */
+.dark-mode {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+.dark-mode .navbar {
+  background-color: #111 !important;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .nav-links a,
+.dark-mode #navLinks button {
+  background: #222 !important;
+  color: #fff !important;
+}
+
+.dark-mode .nav-links a:hover,
+.dark-mode #navLinks button:hover {
+  background: #007bff !important;
+}
+
+.dark-mode .news-card {
+  background-color: #1a1a1a !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .news-title {
+  color: #fff !important;
+}
+
+.dark-mode .news-description {
+  color: #ccc !important;
+}
+
+.dark-mode .read-more a {
+  color: #4da3ff !important;
+}
+
+
+/* Optional: subtle button press effect */
+.nav-links a:active,
+#navLinks button:active {
+  transform: translateY(0px);
+  box-shadow: none;
+}
+
 .logo {
-  font-size: 1.8rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: #111;
 }
@@ -91,6 +183,8 @@ body {
   outline: none;
   width: 180px;
   transition: border 0.3s ease;
+  position: relative;
+  right: 10px;
 }
 
 .search-box input:focus {
@@ -290,3 +384,50 @@ body {
   }
 }
 
+/* ==== DARK MODE FULL FIX ==== */
+.dark-mode {
+  background-color: #000 !important;
+  color: #fff !important;
+}
+
+/* body ke andar sab section dark ho */
+.dark-mode body,
+.dark-mode #container,
+.dark-mode .news-container {
+  background-color: #000 !important;
+}
+
+/* navbar */
+.dark-mode .navbar {
+  background-color: #111 !important;
+  color: #fff !important;
+  box-shadow: 0 2px 10px rgba(255,255,255,0.1);
+}
+
+/* cards */
+.dark-mode .news-card {
+  background-color: #1a1a1a !important;
+  color: #fff !important;
+  box-shadow: 0 4px 12px rgba(255,255,255,0.05);
+}
+
+/* text colors */
+.dark-mode .news-title {
+  color: #fff !important;
+}
+
+.dark-mode .news-description {
+  color: #ccc !important;
+}
+
+.dark-mode .read-more a {
+  color: #4da3ff !important;
+}
+
+/* logo color invert */
+.dark-mode .logo {
+  color: #fff !important;
+}
+.dark-mode .logo span {
+  color: #4da3ff !important;
+}
